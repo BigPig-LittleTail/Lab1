@@ -22,7 +22,7 @@
  ******************************************************************************
  */
 package application;
-//This is a change.
+//This is
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
