@@ -1,7 +1,16 @@
 package application;
-//changed
+
+//The third file's change
+
+//B2 change change change
+
+//B1 change change change
+
+//C4 change change change
+
+// partner change
 import java.awt.Desktop;
-// partner changed
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -29,8 +38,8 @@ import javafx.stage.Stage;
 
 
 public class MyController implements Initializable {
-
 	//private Desktop desktop = Desktop.getDesktop();
+
 	@FXML
 	public static Graph myGraph;
 
@@ -42,6 +51,7 @@ public class MyController implements Initializable {
 	private Stage  newTEXT = new Stage();
 	@FXML
 	private Stage  ShortestPath = new Stage();
+
 
 	@FXML
 	private Stage  randStage = new Stage();
@@ -56,6 +66,7 @@ public class MyController implements Initializable {
 	private TextArea shortOut;
 	@FXML
 	private TextField walkText;
+
 
 
    @FXML
@@ -82,6 +93,7 @@ public class MyController implements Initializable {
        fileChooser.getExtensionFilters().add(extFilter);
        File file = fileChooser.showOpenDialog(stageFile);
 
+
        if (file != null) {
     	   showGraph.setVisible(true);
     	   searchBridge.setVisible(true);
@@ -107,7 +119,6 @@ public class MyController implements Initializable {
 
    		myGraph.readGraph(a);
 
-
        }
        else
        {
@@ -117,6 +128,7 @@ public class MyController implements Initializable {
     	   newText.setVisible(false);
     	   shorestPath.setVisible(false);
     	   randWalk.setVisible(false);
+
 
        }
 
@@ -155,6 +167,7 @@ public class MyController implements Initializable {
 		stageSearchBridge.setScene(myScene);
 		stageSearchBridge.show();
 
+
    }
 
    @FXML
@@ -164,7 +177,6 @@ public class MyController implements Initializable {
 
 	   bridgeOut.setText(xString);
    }
-
 
    @FXML
    public void newText(ActionEvent event) // 生成新文本窗口
@@ -187,7 +199,6 @@ public class MyController implements Initializable {
 	   String xString  =  myGraph.generateNewText(inText.getText());
 	   outText.setText(xString);
    }
-
 
    @FXML
    public void shortestPath(ActionEvent event) // 生成对短路径窗口
@@ -226,6 +237,7 @@ public class MyController implements Initializable {
 	   else
 	   {
 		   shortOut.setText("We dont support from all to word2 path!");
+
 	   }
    }
 
@@ -242,6 +254,7 @@ public class MyController implements Initializable {
  		}
 
 
+
  		Scene myScene = new Scene(myPane);
  		randStage.setScene(myScene);
  		randStage.show();
@@ -252,10 +265,12 @@ public class MyController implements Initializable {
  		 ww = 0;
    }
 
+
    @FXML
    public static String wwalk[];
    @FXML
    public static int ww = 0;
+
 
    @FXML
    public void Walk(ActionEvent event)  // 游走按钮事件
@@ -321,12 +336,14 @@ public class MyController implements Initializable {
 
 class Constant
 {
+
 	public static final int INfINITE = 100000;
 
 }
 
 class Graph
 {
+
 
     private int V = 0;  // 节点个数
 	private int E = 0;  // 边个数
@@ -340,7 +357,6 @@ class Graph
 	private String [][] P;						// Floyd算法最短路径矩阵
 
 	private Stack<String> stack_p = new Stack<String>();  // 栈（字符串类型）
-
 
 	class Vertex								// 顶点结构体
 	{
@@ -397,6 +413,7 @@ class Graph
 
 		}
 
+
 		for(int i = 0;i<readin.length;i++)          // 单词映射顶点下标Hashmap初始化
 		{
 			vexToInt.put(readin[i],-1);
@@ -411,7 +428,6 @@ class Graph
 		vertexs = new Vertex[value];
 
 
-
 		D = new int[V][V];
 		P = new String[V][V];
 
@@ -424,7 +440,6 @@ class Graph
 			int i = vexToInt.get(key);
 			vertexs[i] = new Vertex();
 			vertexs[i].ver = key;
-
 			D[i] = new int[V];
 			P[i] = new String[V];
 			for(int j = 0;j<V;j++)
@@ -433,15 +448,12 @@ class Graph
 				P[i][j] = "";
 			}
 
-
-		}
-
-
 		for(int i = 0;i<E;i++)                      // 将边加入对应顶点边链表
 		{
 			int j = vexToInt.get(edges[i].start_edge);
 			vertexs[j].ver = edges[i].start_edge;
 			vertexs[j].edge.add(edges[i]);
+
 
 
 			D[vexToInt.get(edges[i].start_edge)][vexToInt.get(edges[i].end_edge)] = edges[i].weight;
@@ -464,6 +476,7 @@ class Graph
 					}
 				}
 			}
+
 		}
 	}
 
@@ -479,6 +492,7 @@ class Graph
 			gV.addln(adj);
 		}
 		gV.addln(gV.end_graph());
+
 
 
 		File file = new File("GRAPH1.jpg");  // 生成.jpg
@@ -528,6 +542,7 @@ class Graph
 			else
 			{
 				brigewords = brigewords + temp +".";
+
 			}
 		}
 		return brigewords;                       // 返回桥接词
@@ -541,7 +556,9 @@ class Graph
 			String bridgeWord = bridgeWords(word1, word2); // 调用生成桥接词算法
 			if(bridgeWord.equals(""))
 			{
+
 				outputString = "No bridge words from " +word1 +" to " +word2+" !";
+
 			}
 			else
 			{
@@ -554,7 +571,6 @@ class Graph
 		}
 		return outputString;
 	}
-
 
 	public String generateNewText(String inputText) // 生成新文本
 	{
@@ -569,6 +585,7 @@ class Graph
 			if(vexToInt.containsKey(splitText[i]) && vexToInt.containsKey(splitText[i+1]))
 			{
 				String bridgeWords = bridgeWords(splitText[i],splitText[i+1]);
+
 
 				if(!bridgeWords.equals(""))
 				{
@@ -594,7 +611,6 @@ class Graph
 	 * 由于最短路径算法对于单源和指定的点对是重复部分，故写shortestPath函数来简化代码
 	 */
 
-
 	private String shortestPath(String start,String end)// 生成一条最短路径
 	{
 		String outt = "";
@@ -617,7 +633,6 @@ class Graph
 			return outt;
 		}
 	}
-
 
 	public String f_to_one(String start) // 单源最短路径
 	{
@@ -647,6 +662,7 @@ class Graph
 				outt = word1 +"->" + temp + word2 +
 						"\nThe length of path is "+D[vexToInt.get(word1)][vexToInt.get(word2)]+"\n";
 			}
+
 		}
 		else
 		{
@@ -665,11 +681,11 @@ class Graph
 			visit.put(edges[j], false);
 		}
 
-
 		Random r1 = new Random();
 		int x = r1.nextInt(V);
 		String start = vertexs[x].ver ;
         stack_p.push(start);          //随机一个点起手
+
 
         outt = start;
 		LinkedList<Edge> p;
@@ -681,6 +697,7 @@ class Graph
 			{
 				int j = r1.nextInt(p.size());
 				Edge edge = p.get(j);
+
 
 				outt  = outt + " " + edge.end_edge;
 				if(!visit.get(edge)) // 重复的边
@@ -696,9 +713,6 @@ class Graph
 		}
 		return outt;
 	}
-
-
-
 
 }
 

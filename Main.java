@@ -1,5 +1,14 @@
 package application;
-//changed
+//The second file's change
+
+//B2 change change
+
+
+//B1 change change
+
+
+//C4 change change
+//partner change
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -20,10 +29,6 @@ public class Main extends Application {
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
 
-
-
-
-
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -32,7 +37,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 
 
 }
